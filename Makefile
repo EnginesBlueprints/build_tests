@@ -1,6 +1,6 @@
 
 post_install:
-	make custom_start restart_required shutdown_script post_install_script env_var ext_repo db_seed fresh_file_perm test_write_file test_write_dir test_write_rec_dir app_persist home_persist local_persist user_home_presist pkg_persist fresh_test_persistent_file test_persist_file worker worker_bg php_ini htaccess apache_conf
+	make custom_start restart_required shutdown_script post_install_script env_var ext_repo db_seed fresh_dir_perm fresh_file_perm test_write_file test_write_dir test_write_rec_dir app_persist home_persist local_persist user_home_presist pkg_persist fresh_test_persistent_file test_persist_file worker worker_bg php_ini htaccess apache_conf
 
 post_run:
 	make shutdown_run post_install_run
@@ -31,6 +31,10 @@ env_var:
 
 db_seed:
 	echo ' select * from action_tests' | mysql -h ${dbhost} -u ${dbuser}  --password=${dbpasswd}  ${dbname}
+
+
+fresh_dir_perm:
+	ls -l /home/app/fresh_dir_perm_test
 
 fresh_file_perm:
 	ls -l /home/app/fresh_file_perm_test
