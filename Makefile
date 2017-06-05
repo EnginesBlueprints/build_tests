@@ -1,6 +1,8 @@
 
 post_install:
-	make custom_start restart_required shutdown_script post_install_script env_var ext_repo db_seed fresh_dir_perm fresh_file_perm test_write_file test_write_dir test_write_rec_dir app_persist home_persist local_persist user_home_presist pkg_persist fresh_test_persistent_file test_persist_file worker worker_bg php_ini htaccess apache_conf
+	make custom_start restart_required shutdown_script post_install_script env_var ext_repo db_seed fresh_dir_perm fresh_file_perm test_write_file test_write_dir test_write_rec_dir app_persist local_persist pkg_persist fresh_test_persistent_file test_persist_file php_ini htaccess apache_conf worker worker_bg
+
+#belum home_persist user_home_presist
 
 post_run:
 	make shutdown_run post_install_run
@@ -65,7 +67,7 @@ pkg_persist:
 	ls -l /home/app/test_package_dest/test_persist_dir
 
 fresh_test_persistent_file:
-	ls -l /home/fresh_test_persistent_file
+	ls -l /home/app/fresh_test_persistent_file
 
 test_persist_file:
 	ls -la /home/app/test_package_dest/test_persist_file
@@ -84,5 +86,5 @@ htaccess:
 	ls /home/app/setup/.htaccess
 
 apache_conf:
-	ls  /home/engines/configs/apache2/extra.conf
+	ls /home/engines/configs/apache2/extra.conf
 	ls /etc/apache2/conf-enabled/extra.conf
